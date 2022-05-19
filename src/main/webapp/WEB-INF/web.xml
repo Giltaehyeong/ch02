@@ -18,6 +18,7 @@
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
+		<!-- DispatcherServlet이 기존의 설정을 엎어치고 맵핑되어있다. -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -30,6 +31,7 @@
 	<!-- 2. URL 맵핑 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
+		<!-- 다른 parten을 쓰지 않는다면 이 친구가 다 받는다. -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
