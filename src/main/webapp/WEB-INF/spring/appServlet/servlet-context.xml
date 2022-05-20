@@ -23,7 +23,10 @@
 		<beans:property name="suffix" value=".jsp" />
 							<!-- 접미사 -->
 	</beans:bean>
-	
+	<!-- 원래는 xmlns:mvc 의 mvc:view 이런식으로 표기했었는데 지금은 생략 -->
+	<!-- <mvc:view-controller path="register/add" view-name="registerForm" /> -->
+	<!-- GET요청만 허용 POST 요청 허용x -->
+	<view-controller path="register/add" view-name="registerForm" />
 	<context:component-scan base-package="com.fastcampus.ch2" />
 	
 	
