@@ -6,7 +6,9 @@
 	<title>Home</title>
 </head>
 <body>
+<h1>year = <%=request.getParameter("year") %></h1>
 	<!-- EL(Expression Language) -->
-	<P> ${year}년 ${month}월 ${day}일은 ${yoil}입니다.</P>
+	<!-- model.addAttribute("myDate", date); 값을 myDate로 묶었으니 호출할 때도 myDate. 형식으로 호출한다. -->
+	<P> ${myDate.year}년 ${myDate.month}월 ${myDate.day}일은 ${yoil}입니다.</P>
 </body>
 </html>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class YoilTellerMVC {
+public class YoilTellerMVC2 {
 	
 	//"" 값을 int형으로 바꿔달라는 오류가 발생하게되면 실행되는 예외메서드
 	@ExceptionHandler(Exception.class)
@@ -20,7 +20,7 @@ public class YoilTellerMVC {
 		//해당 view 페이지 출력
 	}
 	
-    @RequestMapping("/getYoilMVC") // http://localhost/ch2/getYoilMVC
+    @RequestMapping("/getYoilMVC2") // http://localhost/ch2/getYoilMVC
     public String main(@RequestParam(required = true) int year,
     		@RequestParam(required = true) int month,
     		@RequestParam(required = true) int day, Model model) {
