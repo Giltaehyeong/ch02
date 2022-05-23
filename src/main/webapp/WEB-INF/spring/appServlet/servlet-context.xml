@@ -18,7 +18,7 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	                                                           <!-- view이름이 실제로 어떤파일인지 해석해주는 클래스 -->
+	                                                    <!-- view이름이 실제로 어떤파일인지 해석해주는 클래스 -->
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 							<!-- 접두사 -->
 		<beans:property name="suffix" value=".jsp" />
@@ -29,6 +29,22 @@
 	<!-- GET요청만 허용 POST 요청 허용x -->
 	<!-- <view-controller path="/register/add" view-name="registerForm" /> -->
 	<context:component-scan base-package="com.fastcampus.ch2" />
+	
+	<!-- SimpleMappingExceptionResolver 예외종류 + 예외 뷰 -->
+	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<beans:property name="defaultErrorView" value="error"/>
+    		<beans:property name="exceptionMappings">
+      			<beans:props>
+      													<!-- 예외종류    에러뷰  (연결) -->
+        			<beans:prop key="com.fastcampus.ch2.MyException">error400</beans:prop>
+      			</beans:props>
+    		</beans:property>
+		<beans:property name="statusCodes">
+			<beans:props>
+        			<beans:prop key="error400">404</beans:prop>
+			</beans:props>
+		</beans:property>
+  	</beans:bean>	
 	
 	
 	

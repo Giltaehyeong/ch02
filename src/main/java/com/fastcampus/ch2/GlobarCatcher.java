@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice("com.fastcampus.ch3") //지정된 패키지에서 발생한 예외처리
-//@ControllerAdvice 모든패키지 적용
-// @ControllerAdvice 선언하면 모든 컨트롤러에서 발생하는 예외들을 여기있는 메서드들이 처리함.
+//@ControllerAdvice 모든패키지 적용 : 선언하면 모든 컨트롤러에서 발생하는 예외들을 여기있는 메서드들이 처리함.
 public class GlobarCatcher {
 
 	@ExceptionHandler({NullPointerException.class, FileNotFoundException.class})
