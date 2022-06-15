@@ -21,59 +21,59 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RegisterController {
 
 	@InitBinder
-	//³¯Â¥Çü½ÄÀ¸·Î ¹Ù²Ù´Â ¸Ş¼­µå
+	//ë‚ ì§œí˜•ì‹ìœ¼ë¡œ ë°”ê¾¸ëŠ” ë©”ì„œë“œ
 	public void toDate(WebDataBinder binder) {
 		ConversionService conversionService = binder.getConversionService();
 //		System.out.println("conversionService" + conversionService);
-//		              //µ¥ÀÌÅÍ °ËÁõÇÏ´Â ¸Ş¼­µå
+//		              //ë°ì´í„° ê²€ì¦í•˜ëŠ” ë©”ì„œë“œ
 //		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//		                                         //º¯È¯ÇÒ µ¥ÀÌÆ® Å¸ÀÔ.
+//		                                         //ë³€í™˜í•  ë°ì´íŠ¸ íƒ€ì….
 //		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false));
-//																// ºó °ªÀ» Çã¿ëÇÒ°ÍÀÎ°¡?
+//																// ë¹ˆ ê°’ì„ í—ˆìš©í• ê²ƒì¸ê°€?
 		binder.registerCustomEditor(String[].class, "hobby", new StringArrayPropertyEditor("#"));
-//		binder.setValidators(new UserValidator()); //UserValidator¸¦ WebDataBinderÀÇ ·ÎÄÃ validator·Î µî·Ï
+//		binder.setValidators(new UserValidator()); //UserValidatorë¥¼ WebDataBinderì˜ ë¡œì»¬ validatorë¡œ ë“±ë¡
 //		binder.addValidators(new UserValidator());
 		List<Validator> validatorList = binder.getValidators();
 		System.out.println("validatorList" + validatorList);
 	}
 	
 	@RequestMapping(value = "/register/add", method = {RequestMethod.GET, RequestMethod.POST})
-														//µÑ´Ù Çã¿ëÇØÁØ´Ù.
+														//ë‘˜ë‹¤ í—ˆìš©í•´ì¤€ë‹¤.
 //	<view-controller path="register/add" view-name="registerForm" />
-//	@GetMapping("register/add") // ½Å±ÔÈ¸¿ø °¡ÀÔ È­¸é
+//	@GetMapping("register/add") // ì‹ ê·œíšŒì› ê°€ì… í™”ë©´
 	public String register() {
 		return "registerForm";
 	}
 	
 //	@RequestMapping(value = "register/save", method=RequestMethod.POST)
 //	 Request method 'GET' not supported
-	@PostMapping("/register/save") //4.3 ºÎÅÍ Àû¿ë
+	@PostMapping("/register/save") //4.3 ë¶€í„° ì ìš©
 	public String save(@Valid User user, BindingResult result,Model m) throws Exception {
-		               //¹ÙÀÎµù ÇÒ °´Ã¼ µÚ¿¡ ¿Í¾ßµÊ.
-					   //BindingResult°¡ ÀÖÀ¸¸é ÄÁÆ®·Ñ·¯ÇÑÅ× ¹ÙÀÎµù °á°ú¸¦ ÁÖ°í ¾î¶»°Ô ÇÒ°ÍÀÎÁö Ã³¸®ÇÏ°Ô ÇÏ´Â°Í.
+		               //ë°”ì¸ë”© í•  ê°ì²´ ë’¤ì— ì™€ì•¼ë¨.
+					   //BindingResultê°€ ìˆìœ¼ë©´ ì»¨íŠ¸ë¡¤ëŸ¬í•œí…Œ ë°”ì¸ë”© ê²°ê³¼ë¥¼ ì£¼ê³  ì–´ë–»ê²Œ í• ê²ƒì¸ì§€ ì²˜ë¦¬í•˜ê²Œ í•˜ëŠ”ê²ƒ.
 //		resultorg.springframework.validation.BeanPropertyBindingResult: 1 errors
 		System.out.println("result = "+ result);
 		System.out.println("user ="+ result);
 		
-//		//¼öµ¿ °ËÁõ - Validaoter¸¦ Á÷Á¢ »ı¼ºÇÏ°í, validate()¸¦ Á÷Á¢ È£Ãâ
+//		//ìˆ˜ë™ ê²€ì¦ - Validaoterë¥¼ ì§ì ‘ ìƒì„±í•˜ê³ , validate()ë¥¼ ì§ì ‘ í˜¸ì¶œ
 //		UserValidator userValidator = new UserValidator();
-//		userValidator.validate(user, result); //BingdingResult´Â ErrorsÀÇ ÀÚ¼Õ
+//		userValidator.validate(user, result); //BingdingResultëŠ” Errorsì˜ ìì†
 		
-		// User °´Ã¼¸¦ °ËÁõÇÑ °á°ú ¿¡·¯°¡ ÀÖÀ¸¸é, registerFormÀ» ÀÌ¿ëÇØ¼­ ¿¡·¯¸¦ º¸¿©Áà¾ß ÇÔ.
+		// User ê°ì²´ë¥¼ ê²€ì¦í•œ ê²°ê³¼ ì—ëŸ¬ê°€ ìˆìœ¼ë©´, registerFormì„ ì´ìš©í•´ì„œ ì—ëŸ¬ë¥¼ ë³´ì—¬ì¤˜ì•¼ í•¨.
 		if(result.hasErrors()) {
 			return "registerForm";
 		}
 		
-		// 1. À¯È¿¼º °Ë»ç
+		// 1. ìœ íš¨ì„± ê²€ì‚¬
 //		if(!isValid(user)) {
-//			String msg = URLEncoder.encode("id¸¦ Àß¸øÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.", "utf-8");
+//			String msg = URLEncoder.encode("idë¥¼ ì˜ëª»ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.", "utf-8");
 //			
-//			m.addAttribute("msg", msg); //model¿¡ ´ã¾Æ¼­ ³Ñ°ÜÁÙ ¼ö ÀÖÀ½.
-//			return "forward:/register/add"; //URLÀçÀÛ¼º(rewriting)
-//			return "redirect:/register/add?msg="+msg; //URLÀçÀÛ¼º(rewriting)
+//			m.addAttribute("msg", msg); //modelì— ë‹´ì•„ì„œ ë„˜ê²¨ì¤„ ìˆ˜ ìˆìŒ.
+//			return "forward:/register/add"; //URLì¬ì‘ì„±(rewriting)
+//			return "redirect:/register/add?msg="+msg; //URLì¬ì‘ì„±(rewriting)
 //		}
 		
-		// 2. DB¿¡ ½Å±ÔÈ¸¿ø Á¤º¸¸¦ ÀúÀå
+		// 2. DBì— ì‹ ê·œíšŒì› ì •ë³´ë¥¼ ì €ì¥
 		return "registerInfo";
 	}
 

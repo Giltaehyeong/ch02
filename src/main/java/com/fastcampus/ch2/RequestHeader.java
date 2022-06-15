@@ -13,10 +13,10 @@ public class RequestHeader {
 	public void main(HttpServletRequest request) {
 		
 		Enumeration<String> e = request.getHeaderNames();
-		// getHeaderNames() ¸Ş¼­µå¿¡ ´ã±ä Á¤º¸¸¦
-		// Enumeration ÀÎÅÍÆäÀÌ½º·Î ¼±¾ğÇØ °´Ã¼ e¸¦ »ı¼º
+		// getHeaderNames() ë©”ì„œë“œì— ë‹´ê¸´ ì •ë³´ë¥¼
+		// Enumeration ì¸í„°í˜ì´ìŠ¤ë¡œ ì„ ì–¸í•´ ê°ì²´ eë¥¼ ìƒì„±
 		
-		// ¹İº¹¹®À¸·Î Çì´õ¸¦ ÇÏ³ª¾¿ Âï¾îÁÜ.
+		// ë°˜ë³µë¬¸ìœ¼ë¡œ í—¤ë”ë¥¼ í•˜ë‚˜ì”© ì°ì–´ì¤Œ.
 		while (e.hasMoreElements()) {
 			String name = e.nextElement();
 			System.out.println(name + ":" + request.getHeader(name));

@@ -9,16 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TwoDice { // ctrl+shift+o´Â ÀÚµ¿ import
+public class TwoDice { // ctrl+shift+oëŠ” ìë™ import
 	@RequestMapping("/rollDice")
-	//1. ¿äÃ»À» ¹ŞÀ¸¸é
+	//1. ìš”ì²­ì„ ë°›ìœ¼ë©´
 	public void main(HttpServletResponse response) throws IOException {
 		int idx1 = (int)(Math.random()*6)+1;
 		int idx2 = (int)(Math.random()*6)+1;	
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		//2. ÀÌ HTMLÆÄÀÏÀ» ¸¸µé¾î¼­ ÁÖ¸éµÈ´Ù.
+		//2. ì´ HTMLíŒŒì¼ì„ ë§Œë“¤ì–´ì„œ ì£¼ë©´ëœë‹¤.
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");

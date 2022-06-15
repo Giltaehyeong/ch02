@@ -23,9 +23,9 @@ public class LoginController {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		// 1. ¼¼¼ÇÀ» Á¾·á
+		// 1. ì„¸ì…˜ì„ ì¢…ë£Œ
 		session.invalidate();
-		// 2. È¨À¸·Î ÀÌµ¿
+		// 2. í™ˆìœ¼ë¡œ ì´ë™
 		return "redirect:/";
 	}
 	
@@ -33,34 +33,34 @@ public class LoginController {
 	public String login(String id, String pwd, String toURL, boolean rememberId, 
 			HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-		// 1. id¿Í pwd¸¦ È®ÀÎ
+		// 1. idì™€ pwdë¥¼ í™•ì¸
 		if(!logincheck(id, pwd)) {
-			// 2ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é, loginFormÀ¸·Î ÀÌµ¿
-			String msg = URLEncoder.encode("id ¶Ç´Â pwd°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.", "utf-8");
+			// 2ì¼ì¹˜í•˜ì§€ ì•Šìœ¼ë©´, loginFormìœ¼ë¡œ ì´ë™
+			String msg = URLEncoder.encode("id ë˜ëŠ” pwdê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.", "utf-8");
 			
 			return "redirect:/login/login?msg="+msg;
 		}
 		
-		// 2-2. id¿Í pwd°¡ ÀÏÄ¡ÇÏ¸é, È¨À¸·Î ÀÌµ¿
-		// ¼¼¼Ç °´Ã¼¸¦ ¾ò¾î¿À±â
+		// 2-2. idì™€ pwdê°€ ì¼ì¹˜í•˜ë©´, í™ˆìœ¼ë¡œ ì´ë™
+		// ì„¸ì…˜ ê°ì²´ë¥¼ ì–»ì–´ì˜¤ê¸°
 		HttpSession session = request.getSession();
-		// ¼¼¼Ç °´Ã¼¿¡ id¸¦ ÀúÀå
+		// ì„¸ì…˜ ê°ì²´ì— idë¥¼ ì €ì¥
 		session.setAttribute("id", id);
 		
 		
 		if(rememberId) {
-			//		1. ÄíÅ°¸¦»ı¼º
-			Cookie cookie = new Cookie("id", id); // ctrl+shift+o ÀÚµ¿ import
-			//		2. ÀÀ´ä¿¡ ÀúÀå
+			//		1. ì¿ í‚¤ë¥¼ìƒì„±
+			Cookie cookie = new Cookie("id", id); // ctrl+shift+o ìë™ import
+			//		2. ì‘ë‹µì— ì €ì¥
 			response.addCookie(cookie);
 		}else {
-			// ÄíÅ°¸¦ »èÁ¦
-			Cookie cookie = new Cookie("id", id); // ctrl+shift+o ÀÚµ¿ import
-			cookie.setMaxAge(0); // ÄíÅ° »èÁ¦
-			response.addCookie(cookie); // ÀÀ´ä ÀúÀå
+			// ì¿ í‚¤ë¥¼ ì‚­ì œ
+			Cookie cookie = new Cookie("id", id); // ctrl+shift+o ìë™ import
+			cookie.setMaxAge(0); // ì¿ í‚¤ ì‚­ì œ
+			response.addCookie(cookie); // ì‘ë‹µ ì €ì¥
 		}
 		
-		// 3. È¨À¸·Î ÀÌµ¿
+		// 3. í™ˆìœ¼ë¡œ ì´ë™
 		toURL = toURL==null || toURL.equals("") ? "/" : toURL;
 		return "redirect:"+toURL;
 	}

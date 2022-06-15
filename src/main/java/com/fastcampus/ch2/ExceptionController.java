@@ -18,16 +18,16 @@ public class ExceptionController {
 	}
 	
 	@ExceptionHandler(Exception.class)
-	                    //¿¡¿ÜÃ³¸® ÃÖ°í Á¶»ó.
+	                    //ì—ì™¸ì²˜ë¦¬ ìµœê³  ì¡°ìƒ.
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) //200 -> 500
-	// ÀÀ´ä»óÅÂÄÚµå¸¦ º¯°æÇÑ´Ù.
-	//ExceptionController ÄÁÆ®·Ñ·¯ ³»ºÎ¿¡ ¸Ş¼­µå¿¡¼­ ¿¹¿Ü°¡ ¹ß»ıÇÏ¸é ÀÌ ¸Ş¼­µå¿¡¼­ Ã³¸®ÇÑ´Ù.
+	// ì‘ë‹µìƒíƒœì½”ë“œë¥¼ ë³€ê²½í•œë‹¤.
+	//ExceptionController ì»¨íŠ¸ë¡¤ëŸ¬ ë‚´ë¶€ì— ë©”ì„œë“œì—ì„œ ì˜ˆì™¸ê°€ ë°œìƒí•˜ë©´ ì´ ë©”ì„œë“œì—ì„œ ì²˜ë¦¬í•œë‹¤.
 	public String catcher(Exception ex, Model m) {
 		System.out.println("catcher() in ExceptionController");
 		System.out.println("m="+m);
 //		m.addAttribute("ex", ex); 
-//		isErrorPage = "true" Áö½ÃÀÚ°¡ ÀÖ´Ù¸é ¸ğµ¨°´Ã¼·Î ¸Ş¼¼Áö¸¦ Àü´ŞÇÏÁö ¾Ê¾Æµµ 
-//		exception ±âº»°´Ã¼¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+//		isErrorPage = "true" ì§€ì‹œìê°€ ìˆë‹¤ë©´ ëª¨ë¸ê°ì²´ë¡œ ë©”ì„¸ì§€ë¥¼ ì „ë‹¬í•˜ì§€ ì•Šì•„ë„ 
+//		exception ê¸°ë³¸ê°ì²´ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 		
 		return "error";
 	}
@@ -35,11 +35,11 @@ public class ExceptionController {
 	@RequestMapping("/ex")
 	public String main(Model m) throws Exception{
 		m.addAttribute("msg", "message from ExceptionController.main()");
-			throw new Exception("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			throw new Exception("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 	
 	@RequestMapping("/ex2")
 	public String main2() throws Exception{
-			throw new FileNotFoundException("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			throw new FileNotFoundException("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 }

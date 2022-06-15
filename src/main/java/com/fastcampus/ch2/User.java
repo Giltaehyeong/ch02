@@ -11,7 +11,7 @@ public class User {
 	private String name;
 	private String email;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	//¾Ö³ëÅ×ÀÌ¼ÇÀ¸·Î ³¯Â¥Çü½ÄÀ» ÁöÁ¤ÇØÁÙ ¼ö ÀÖÀ½.
+	//ì• ë…¸í…Œì´ì…˜ìœ¼ë¡œ ë‚ ì§œí˜•ì‹ì„ ì§€ì •í•´ì¤„ ìˆ˜ ìˆìŒ.
 	private Date birth;
 	private String[] hobby;
 	private String[] sns;

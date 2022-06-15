@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class RequestParamTest {
 	
-	//"" °ªÀ» intÇüÀ¸·Î ¹Ù²ã´Ş¶ó´Â ¿À·ù°¡ ¹ß»ıÇÏ°ÔµÇ¸é ½ÇÇàµÇ´Â ¿¹¿Ü¸Ş¼­µå
+	//"" ê°’ì„ intí˜•ìœ¼ë¡œ ë°”ê¿”ë‹¬ë¼ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ê²Œë˜ë©´ ì‹¤í–‰ë˜ëŠ” ì˜ˆì™¸ë©”ì„œë“œ
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
 		return "yoilError";
-		//ÇØ´ç view ÆäÀÌÁö Ãâ·Â
+		//í•´ë‹¹ view í˜ì´ì§€ ì¶œë ¥
 	}
 	
 	@RequestMapping("/requestParam")
@@ -30,7 +30,7 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam2")
-//	public String main2(@RequestParam(name="year", required=false) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ 
+//	public String main2(@RequestParam(name="year", required=false) String year) {   // ì•„ë˜ì™€ ë™ì¼ 
 	public String main2(String year) {   
 //		http://localhost/ch2/requestParam2         ---->> year=null
 //		http://localhost/ch2/requestParam2?year    ---->> year=""
@@ -39,10 +39,10 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam3")
-//		public String main3(@RequestParam(name="year", required=true) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ 
-	                                                 //ÇÊ¼öÀÔ·ÂÀÌ true ÀÎµ¥ °ªÀ» ¾ÈÁÖ°í È£ÃâÇÏ¸é Å¬¶óÀÌ¾ğÆ® ¿¡·¯
+//		public String main3(@RequestParam(name="year", required=true) String year) {   // ì•„ë˜ì™€ ë™ì¼ 
+	                                                 //í•„ìˆ˜ì…ë ¥ì´ true ì¸ë° ê°’ì„ ì•ˆì£¼ê³  í˜¸ì¶œí•˜ë©´ í´ë¼ì´ì–¸íŠ¸ ì—ëŸ¬
 		public String main3(@RequestParam String year) {   
-//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=true¶ó¼­ 
+//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=trueë¼ì„œ 
 //		http://localhost/ch2/requestParam3?year    ---->> year=""
 		System.out.printf("[%s]year=[%s]%n", new Date(), year);
 		return "yoil";	

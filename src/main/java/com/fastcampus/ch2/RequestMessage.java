@@ -13,8 +13,8 @@ public class RequestMessage {
 	public void main(HttpServletRequest request) throws Exception {
 		
 		// 1. request line
-		String requestLine = request.getMethod();       // GET ¶Ç´Â POST
-		requestLine += " " + request.getRequestURI();   // /ch2/requestMessage(¸¹ÀÌ¾¸)
+		String requestLine = request.getMethod();       // GET ë˜ëŠ” POST
+		requestLine += " " + request.getRequestURI();   // /ch2/requestMessage(ë§Žì´ì”€)
 		
 		String queryString = request.getQueryString();  // year=2021&month=10&day=1
 		requestLine += queryString == null ? "" : "?"+queryString;  
@@ -30,12 +30,12 @@ public class RequestMessage {
 			System.out.println(name + ":" + request.getHeader(name));
 		}
 		
-		// 3. request body - POSTÀÏ ¶§¸¸ ÇØ´ç, GETÀº body°¡ ¾øÀ½(CONTENT_LENGTH=0)
+		// 3. request body - POSTì¼ ë•Œë§Œ í•´ë‹¹, GETì€ bodyê°€ ì—†ìŒ(CONTENT_LENGTH=0)
 		final int CONTENT_LENGTH = request.getContentLength();
 //		System.out.println("content length="+CONTENT_LENGTH);
 		
 		
-		//body°¡ ÀÖÀ»¶§ Ãâ·Â.
+		//bodyê°€ ìžˆì„ë•Œ ì¶œë ¥.
 		if(CONTENT_LENGTH > 0) {
 			byte[] content = new byte[CONTENT_LENGTH];
 

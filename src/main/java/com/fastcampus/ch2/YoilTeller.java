@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-// ³â¿øÀÏÀ» ÀÔ·ÂÇÏ¸é ¿äÀÏÀ» ¾Ë·ÁÁÖ´Â ÇÁ·Î±×·¥
+// ë…„ì›ì¼ì„ ì…ë ¥í•˜ë©´ ìš”ì¼ì„ ì•Œë ¤ì£¼ëŠ” í”„ë¡œê·¸ë¨
 @Controller
 public class YoilTeller { // http://localhost/ch2/getYoil?year=2021&month=10&day=1
 //	public static void main(String[] args) { 
 		@RequestMapping("/getYoil")
 		public void main(HttpServletRequest request, HttpServletResponse response) throws IOException{
-		// 1. ÀÔ·Â
+		// 1. ì…ë ¥
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		
-		// 2. ÀÛ¾÷
+		// 2. ì‘ì—…
 		int yyyy = Integer.parseInt(year);
 		int mm = Integer.parseInt(month);
 		int dd = Integer.parseInt(day);
@@ -28,16 +28,16 @@ public class YoilTeller { // http://localhost/ch2/getYoil?year=2021&month=10&day
 		Calendar cal = Calendar.getInstance();
 		cal.set(yyyy, mm - 1, dd);
 		
-		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // 1:ÀÏ¿äÀÏ, 2:¿ù¿äÀÏ ...
-		char yoil = " ÀÏ¿ùÈ­¼ö¸ñ±İÅä".charAt(dayOfWeek);
+		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // 1:ì¼ìš”ì¼, 2:ì›”ìš”ì¼ ...
+		char yoil = " ì¼ì›”í™”ìˆ˜ëª©ê¸ˆí† ".charAt(dayOfWeek);
 		
-		// 3. Ãâ·Â
-		response.setContentType("text/html"); //º¸³»´Â ¹®¼­ Á¾·ù´Â text/htmlÀÌ´Ù.
-		// ºê¶ó¿ìÀú´Â º¸³»´Â ³»¿ëÀÌ ÅØ½ºÆ®ÀÎÁö ¹ÙÀÌ³Ê¸®ÀÎÁö ¸ğ¸§.
-		// ±×·¡¼­ Çü½ÄÀ» ÁöÁ¤ÇØÁÖ¾î¾ß ÇÔ.
-		response.setCharacterEncoding("utf-8"); //ÀÎÄÚµù ¾ç½ÄÀº utf-8ÀÌ´Ù.
-		PrintWriter out = response.getWriter(); // response°´Ã¼¿¡¼­ ºê¶ó¿ìÀú·ÎÀÇ Ãâ·Â ½ºÆ®¸²À» ¾ò´Â´Ù.
-		out.println(year + "³â " + month + "¿ù " + day + "ÀÏÀº ");
-		out.println(yoil + "¿äÀÏÀÔ´Ï´Ù.");
+		// 3. ì¶œë ¥
+		response.setContentType("text/html"); //ë³´ë‚´ëŠ” ë¬¸ì„œ ì¢…ë¥˜ëŠ” text/htmlì´ë‹¤.
+		// ë¸Œë¼ìš°ì €ëŠ” ë³´ë‚´ëŠ” ë‚´ìš©ì´ í…ìŠ¤íŠ¸ì¸ì§€ ë°”ì´ë„ˆë¦¬ì¸ì§€ ëª¨ë¦„.
+		// ê·¸ë˜ì„œ í˜•ì‹ì„ ì§€ì •í•´ì£¼ì–´ì•¼ í•¨.
+		response.setCharacterEncoding("utf-8"); //ì¸ì½”ë”© ì–‘ì‹ì€ utf-8ì´ë‹¤.
+		PrintWriter out = response.getWriter(); // responseê°ì²´ì—ì„œ ë¸Œë¼ìš°ì €ë¡œì˜ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ì„ ì–»ëŠ”ë‹¤.
+		out.println(year + "ë…„ " + month + "ì›” " + day + "ì¼ì€ ");
+		out.println(yoil + "ìš”ì¼ì…ë‹ˆë‹¤.");
 	}
 }

@@ -8,8 +8,8 @@ import org.springframework.validation.Validator;
 	public class UserValidator implements Validator {
 		@Override
 		public boolean supports(Class<?> clazz) {
-//			return User.class.equals(clazz); // °ËÁõÇÏ·Á´Â °´Ã¼°¡ UserÅ¸ÀÔÀÎÁö È®ÀÎ
-			return User.class.isAssignableFrom(clazz); // clazz°¡ User ¶Ç´Â ±× ÀÚ¼ÕÀÎÁö È®ÀÎ
+//			return User.class.equals(clazz); // ê²€ì¦í•˜ë ¤ëŠ” ê°ì²´ê°€ Useríƒ€ì…ì¸ì§€ í™•ì¸
+			return User.class.isAssignableFrom(clazz); // clazzê°€ User ë˜ëŠ” ê·¸ ìì†ì¸ì§€ í™•ì¸
 		}
 
 		@Override
@@ -24,7 +24,7 @@ import org.springframework.validation.Validator;
 	//			errors.rejectValue("id", "required");
 	//		}
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id",  "required");
-			                                                              //µğÆúÆ® ¸Ş¼¼Áö »ç¿ë°¡´É.. ¿Ø¸¸ÇÏ¸é ¾È³Ö´ÂÆí..
+			                                                              //ë””í´íŠ¸ ë©”ì„¸ì§€ ì‚¬ìš©ê°€ëŠ¥.. ì™ ë§Œí•˜ë©´ ì•ˆë„£ëŠ”í¸..
 			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "pwd", "required");
 			
 			if(id==null || id.length() <  5 || id.length() > 12) {

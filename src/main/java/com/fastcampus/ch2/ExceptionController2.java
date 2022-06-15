@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 //@ResponseStatus(HttpStatus.BAD_REQUEST) //500 -> 400
-//Ä¿½ºÅÒ ¿¹¿ÜÃ³¸® ¸Ş¼­µå
+//ì»¤ìŠ¤í…€ ì˜ˆì™¸ì²˜ë¦¬ ë©”ì„œë“œ
 class MyException extends RuntimeException{
 	public MyException(String msg) {
 		super(msg);
@@ -21,11 +21,11 @@ public class ExceptionController2 {
 	
 	@RequestMapping("/ex3")
 	public String main() throws Exception{
-			throw new MyException("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			throw new MyException("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 	
 	@RequestMapping("/ex4")
 	public String main2() throws Exception{
-			throw new FileNotFoundException("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+			throw new FileNotFoundException("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 }

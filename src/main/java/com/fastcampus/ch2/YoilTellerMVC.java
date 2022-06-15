@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class YoilTellerMVC {
 	
-	//"" °ªÀ» intÇüÀ¸·Î ¹Ù²ã´Ş¶ó´Â ¿À·ù°¡ ¹ß»ıÇÏ°ÔµÇ¸é ½ÇÇàµÇ´Â ¿¹¿Ü¸Ş¼­µå
+	//"" ê°’ì„ intí˜•ìœ¼ë¡œ ë°”ê¿”ë‹¬ë¼ëŠ” ì˜¤ë¥˜ê°€ ë°œìƒí•˜ê²Œë˜ë©´ ì‹¤í–‰ë˜ëŠ” ì˜ˆì™¸ë©”ì„œë“œ
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
 		ex.printStackTrace();
-		// ¿¹¿Ü°¡ ¹ß»ıÇÑ°Å Âï¾îº¸±â.
+		// ì˜ˆì™¸ê°€ ë°œìƒí•œê±° ì°ì–´ë³´ê¸°.
 		return "yoilError";
-		//ÇØ´ç view ÆäÀÌÁö Ãâ·Â
+		//í•´ë‹¹ view í˜ì´ì§€ ì¶œë ¥
 	}
 	
     @RequestMapping("/getYoilMVC") // http://localhost/ch2/getYoilMVC
@@ -25,20 +25,20 @@ public class YoilTellerMVC {
     		@RequestParam(required = true) int month,
     		@RequestParam(required = true) int day, Model model) {
  
-        // 1. À¯È¿¼º °Ë»ç
+        // 1. ìœ íš¨ì„± ê²€ì‚¬
     	if(!isValid(year, month, day)) 
-    		return "yoilError";  // À¯È¿ÇÏÁö ¾ÊÀ¸¸é, /WEB-INF/views/yoilError.jsp·Î ÀÌµ¿
+    		return "yoilError";  // ìœ íš¨í•˜ì§€ ì•Šìœ¼ë©´, /WEB-INF/views/yoilError.jspë¡œ ì´ë™
     	
-        // 2. Ã³¸®
+        // 2. ì²˜ë¦¬
     	char yoil = getYoil(year, month, day);
 
-        // 3. Model¿¡ ÀÛ¾÷ °á°ú ÀúÀå
+        // 3. Modelì— ì‘ì—… ê²°ê³¼ ì €ì¥
         model.addAttribute("year", year);
         model.addAttribute("month", month);
         model.addAttribute("day", day);
         model.addAttribute("yoil", yoil);
         
-        // 4. ÀÛ¾÷ °á°ú¸¦ º¸¿©ÁÙ ViewÀÇ ÀÌ¸§À» ¹İÈ¯
+        // 4. ì‘ì—… ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ Viewì˜ ì´ë¦„ì„ ë°˜í™˜
         return "yoil"; // /WEB-INF/views/yoil.jsp
     }
     
@@ -47,13 +47,13 @@ public class YoilTellerMVC {
         cal.set(year, month - 1, day);
 
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-        return " ÀÏ¿ùÈ­¼ö¸ñ±İÅä".charAt(dayOfWeek);
+        return " ì¼ì›”í™”ìˆ˜ëª©ê¸ˆí† ".charAt(dayOfWeek);
     }
     
     private boolean isValid(int year, int month, int day) {    
     	if(year==-1 || month==-1 || day==-1) 
     		return false;
     	
-    	return (1<=month && month<=12) && (1<=day && day<=31); // °£´ÜÈ÷ Ã¼Å© 
+    	return (1<=month && month<=12) && (1<=day && day<=31); // ê°„ë‹¨íˆ ì²´í¬ 
     }
 }
