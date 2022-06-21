@@ -14,11 +14,9 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- 1. 원격프로그램 등록 -->
 	<!-- Processes application requests -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
-		<!-- DispatcherServlet이 기존의 설정을 엎어치고 맵핑되어있다. -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -27,44 +25,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
-		
-	<!-- 2. URL 맵핑 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<!-- 다른 parten을 쓰지 않는다면 이 친구가 다 받는다. -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-		<!-- 한글 변환 필터 시작 -->
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<!-- 한글 변환 필터 끝 -->
-	
-	<!-- 에러 코드별로 에러페이지 지정 -->
-	<error-page>
-		<error-code>400</error-code>
-		<location>/error400.jsp</location>
-	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/error500.jsp</location>
-	</error-page>
-	
-	
 
 </web-app>

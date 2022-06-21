@@ -10,51 +10,18 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven validator="globalValidator"/>
-	<beans:bean id = "globalValidator" class="com.fastcampus.ch2.GlobalValidator" />
+	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/**" location="/resources/" />
-	              <!-- /resources 지움 : 정적리소스 불러올때 생략  -->
+	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	                                                    <!-- view이름이 실제로 어떤파일인지 해석해주는 클래스 -->
 		<beans:property name="prefix" value="/WEB-INF/views/" />
-							<!-- 접두사 -->
 		<beans:property name="suffix" value=".jsp" />
-							<!-- 접미사 -->
 	</beans:bean>
-	<!-- 원래는 xmlns:mvc 의 mvc:view 이런식으로 표기했었는데 지금은 생략 -->
-	<!-- <mvc:view-controller path="register/add" view-name="registerForm" /> -->
-	<!-- GET요청만 허용 POST 요청 허용x -->
-	<!-- <view-controller path="/register/add" view-name="registerForm" /> -->
-	<context:component-scan base-package="com.fastcampus.ch2" />
 	
-	<!-- SimpleMappingExceptionResolver 예외종류 + 예외 뷰 -->
-	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<beans:property name="defaultErrorView" value="error"/>
-    		<beans:property name="exceptionMappings">
-      			<beans:props>
-      													<!-- 예외종류    에러뷰  (연결) -->
-        			<beans:prop key="com.fastcampus.ch2.MyException">error400</beans:prop>
-      			</beans:props>
-    		</beans:property>
-		<beans:property name="statusCodes">
-			<beans:props>
-        			<beans:prop key="error400">404</beans:prop>
-			</beans:props>
-		</beans:property>
-  	</beans:bean>
-  	
-  	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basenames">
-			<beans:list>
-				<beans:value>error_message</beans:value> <!-- /src/main/resources/error_message.properties -->
-			</beans:list>
-		</beans:property>
-		<beans:property name="defaultEncoding" value="UTF-8"/>
-	</beans:bean>
+	<context:component-scan base-package="com.fastcampus.ch2" />
 	
 	
 	
