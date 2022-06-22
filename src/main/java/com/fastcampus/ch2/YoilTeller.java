@@ -24,6 +24,7 @@ public class YoilTeller { // http://localhost:8080/getYoil?year=2021&month=10&da
 		
 		//2. 작업
 		int yyyy = Integer.parseInt(year);
+					//문자열을 정수값으로 변환하여 받아옴.
 		int mm = Integer.parseInt(month);
 		int dd = Integer.parseInt(day);
 		
