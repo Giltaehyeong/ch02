@@ -14,6 +14,7 @@ public class MethodInfo {
 		//2. 모든 메서드 정보를 가져와서 배열에 저장
 		Method[] methodArr = clazz.getDeclaredMethods();
 		
+		//3. 반복문으로 메서드 출력.
 		for(Method m : methodArr) {
 			String name = m.getName(); // 메서드의 이름
 			Parameter[] paramArr = m.getParameters(); // 매개변수 목록
@@ -22,6 +23,7 @@ public class MethodInfo {
 			
 			StringJoiner paramList = new StringJoiner(", ", "(", ")"); // 구분자, 접두사, 접미사
 			
+			// 메서드의 매개변수도 여러개일 수 있으니 반복문으로 돌림.
 			for(Parameter param : paramArr) {
 				String paramName = param.getName();
 				Class  paramType = param.getType();

@@ -22,7 +22,7 @@ import org.springframework.validation.support.BindingAwareModelMap;
 public class MyDispatcherServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		Map    map = request.getParameterMap();
+		Map    map = request.getParameterMap(); // year=2021&month=10&day=1 맵으로 가져옴. key value
 		Model  model = null;
 		String viewName = "";
 		

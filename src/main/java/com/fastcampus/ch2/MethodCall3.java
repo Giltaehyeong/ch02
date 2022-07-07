@@ -42,7 +42,7 @@ public class MethodCall3 {
 				argArr[i] = model = new BindingAwareModelMap(); 
 			} else if(value != null) {  // map에 paramName이 있으면,
 				// value와 parameter의 타입을 비교해서, 다르면 변환해서 저장  
-				argArr[i] = convertTo(value, paramType);				
+				argArr[i] = convertTo(value, paramType); // 타입이 다르면 자동변환 해줌 String을 int로..	
 			} 
 		}
 		System.out.println("paramArr="+Arrays.toString(paramArr));

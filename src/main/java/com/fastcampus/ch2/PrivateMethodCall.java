@@ -12,10 +12,10 @@ public class PrivateMethodCall {
 		// Hello클래스의 Class객체(클래스의 정보를 담고 있는 객체)를 얻어온다.
 		Class helloClass = Class.forName("com.fastcampus.ch2.Hello");
 		Hello hello = (Hello)helloClass.newInstance(); // Class 객체가 가진 정보로 객체 생성
-		                  //반환 타입이 Object라서 형변환 해주어야 함.
+		                  // 반환 타입이 Object라서 형변환 해주어야 함.
 		Method main = helloClass.getDeclaredMethod("main");
 		main.setAccessible(true); // private인 main()을 호출가능하게 한다.
 		
-		main.invoke(hello); //hello.main()
+		main.invoke(hello); // hello.main()
 	}
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 // 년월일을 입력하면 요일을 알려주는 프로그램
 @Controller
-public class YoilTellerMVC { // http://localhost/getYoilMVC?year=2021&month=10&day=1
+public class YoilTellerMVC { // http://localhost/ch2/getYoilMVC?year=2021&month=10&day=1
 //	public static void main(String[] args) {
 	@RequestMapping("/getYoilMVC")
 	// URL 매핑은 중복된게 있으면 안됨.
@@ -19,6 +19,7 @@ public class YoilTellerMVC { // http://localhost/getYoilMVC?year=2021&month=10&d
 //		ModelAndView mv = new ModelAndView();
 		
 		//1. 유효성 검사
+		//왜? 값이 들어왔는지 안들어왔는지 확인해야해서.
 		if(!isValid(year, month, day))
 			return "yoilError";
 			
@@ -43,6 +44,7 @@ public class YoilTellerMVC { // http://localhost/getYoilMVC?year=2021&month=10&d
 		return "yoil"; // /WEB-INF/view/yoil.jsp
 	}
 
+	//private로 메서드를 생성한 이유는 여기 안에서만 사용되기 때문
 	private char getYoil(int year, int month, int day) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month - 1, day);
