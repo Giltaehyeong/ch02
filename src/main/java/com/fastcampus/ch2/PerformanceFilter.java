@@ -26,7 +26,7 @@ public class PerformanceFilter implements Filter {
 		long startTime = System.currentTimeMillis();
 
 		// 2. 서블릿 또는 다음 필터를 호출
-		chain.doFilter(request, response); 
+		chain.doFilter(request, response);
 		
 		// 3. 후처리 작업
 		System.out.print("["+((HttpServletRequest)request).getRequestURI()+"]");
