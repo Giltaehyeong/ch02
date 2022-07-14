@@ -7,7 +7,6 @@ public class User {
 	private String email;
 	private String birth;
 	private String sns;
-	
 	public String getId() {
 		return id;
 	}
@@ -44,12 +43,11 @@ public class User {
 	public void setSns(String sns) {
 		this.sns = sns;
 	}
-	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", pwd=" + pwd + ", name=" + name + ", email=" + email + ", birth=" + birth + ", sns="
 				+ sns + "]";
 	}
 	
-
+	
 }

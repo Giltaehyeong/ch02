@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RequestParamTest {
-	
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
 		return "yoilError";
@@ -80,7 +79,7 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam8") 
-	public String main8(@RequestParam(required=false, defaultValue  ="2021") int year) {   
+	public String main8(@RequestParam(required=false, defaultValue="2021") int year) {   
 	//	http://localhost/ch2/requestParam8        ---->> 500 java.lang.IllegalStateException: Optional int parameter 'year' is present but cannot be translated into a null value due to being declared as a primitive type. Consider declaring it as object wrapper for the corresponding primitive type.
 	//	http://localhost/ch2/requestParam8?year   ---->> 400 Bad Request, nested exception is java.lang.NumberFormatException: For input string: "" 
 		System.out.printf("[%s]year=[%s]%n", new Date(), year);

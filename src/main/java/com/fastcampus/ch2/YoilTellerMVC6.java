@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class YoilTellerMVC6 {
 	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex, BindingResult result) {
-		System.out.println("result="+result);
-		FieldError error = result.getFieldError();
-		
-		System.out.println("code="+error.getCode());
-		System.out.println("field="+error.getField());
-		System.out.println("msg="+error.getDefaultMessage());
-		
+		   System.out.println("result="+result);
+		   FieldError error = result.getFieldError();
+		   
+		   System.out.println("code="+error.getCode());
+		   System.out.println("field="+error.getField());
+		   System.out.println("msg="+error.getDefaultMessage());
 		ex.printStackTrace();
 		return "yoilError";
 	}
 	
     @RequestMapping("/getYoilMVC6") // http://localhost/ch2/getYoilMVC6
-//    public String main(@ModelAttribute("myDate") MyDate date, Model model) {
-    public String main(MyDate date, BindingResult result) {
-System.out.println("result="+result);
-    	// 1. 유효성 검사
+//    public String main(@ModelAttribute("myDate") MyDate date, Model model) { // 아래와 동일
+        public String main(MyDate date, BindingResult result) {
+   System.out.println("result="+result);
+ 
+        // 1. 유효성 검사
     	if(!isValid(date)) 
-    		  return "yoilError";  // 유효하지 않으면, /WEB-INF/views/yoilError.jsp로 이동
+    		return "yoilError";  // 유효하지 않으면, /WEB-INF/views/yoilError.jsp로 이동
     	
         // 2. 처리
 //    	char yoil = getYoil(date);
@@ -43,12 +43,15 @@ System.out.println("result="+result);
         return "yoil"; // /WEB-INF/views/yoil.jsp
     }
     
-    
-    private @ModelAttribute("yoil") char getYoil(MyDate date) {
-		    return getYoil(date.getYear(), date.getMonth(), date.getDay());
-	  }
+    private boolean isValid(MyDate date) {
+		return isValid(date.getYear(), date.getMonth(), date.getDay());
+	}
 
-	  private char getYoil(int year, int month, int day) {
+	private @ModelAttribute("yoil") char getYoil(MyDate date) {
+		return getYoil(date.getYear(), date.getMonth(), date.getDay());
+	}
+
+	private char getYoil(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month - 1, day);
 
@@ -56,10 +59,10 @@ System.out.println("result="+result);
         return " 일월화수목금토".charAt(dayOfWeek);
     }
     
-    private boolean isValid(MyDate date) {    
-    	if(date.getYear()==-1 || date.getMonth()==-1 || date.getDay()==-1) 
+    private boolean isValid(int year, int month, int day) {    
+    	if(year==-1 || month==-1 || day==-1) 
     		return false;
     	
-    	return (1<=date.getMonth() && date.getMonth()<=12) && (1<=date.getDay() && date.getDay()<=31); // 간단히 체크 
+    	return (1<=month && month<=12) && (1<=day && day<=31); // 간단히 체크 
     }
 } 

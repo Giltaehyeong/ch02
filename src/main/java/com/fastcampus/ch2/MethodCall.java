@@ -6,14 +6,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
-
 class ModelController {
 	public String main(HashMap map) {
-		// 작업 결과를 map에 저장
+		// 작업 결과를 map에 저장 
 		map.put("id", "asdf");
 		map.put("pwd", "1111");
 		
-		return "txtView1"; // 뷰이름을 반환
+		return "txtView1"; // 뷰이름을 반환 
 	}
 }
 
@@ -27,7 +26,7 @@ public class MethodCall {
 		
 		System.out.println("after :"+map);
 		
-		render(map, viewName); // map있는 데이터를 view에다가 뿌려줌.
+		render(map, viewName);
 	}
 	
 	static void render(HashMap map, String viewName) throws IOException {
@@ -49,24 +48,8 @@ public class MethodCall {
 			result = result.replace("${"+key+"}", (String)map.get(key));
 		}
 		
-		// 4.렌더링 결과를 출력한다. console에
+		// 4.렌더링 결과를 출력한다.
 		System.out.println(result);
 	}
 }
 
-
-//[txtView1.txt]
-//id=${id}, pwd=${pwd}
-//
-//[txtView2.txt]
-//id:${id}
-//pwd:${pwd}
-//
-//
-//
-//[실행결과]
-//before:{}
-//after :{id=asdf, pwd=1111}
-//[txtView2.txt]
-//id:asdf
-//pwd:1111

@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.net.URLDecoder"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <style>
         * { box-sizing:border-box; }
+
         form {
             width:400px;
             height:600px;
@@ -24,6 +24,7 @@
             border: 1px solid rgb(89,117,196);
             border-radius: 10px;
         }
+
         .input-field {
             width: 300px;
             height: 40px;
@@ -37,6 +38,7 @@
             height:30px;
             margin-top :4px;
         }
+
         button {
             background-color: rgb(89,117,196);
             color : white;
@@ -47,10 +49,12 @@
             border-radius: 5px;
             margin : 20px 0 30px 0;
         }
+
         .title {
             font-size : 50px;
             margin: 40px 0 30px 0;
         }
+
         .msg {
             height: 30px;
             text-align:center;
@@ -65,15 +69,9 @@
     <title>Register</title>
 </head>
 <body>
-   <form action="<c:url value="/register/save"/>" method="post" onsubmit="return formCheck(this)">
-   						<!-- 1. context root 추가 -->
-   						<!-- 2. session id  자동추가 -->
+   <form action="<c:url value="/register/save"/>" method="POST" onsubmit="return formCheck(this)">
     <div class="title">Register</div>
-    <div id="msg" class="msg">
-   	    <c:if test="${not empty param.msg}">
-	        <i class="fa fa-exclamation-circle"> ${URLDecoder.decode(param.msg)}</i>            
-	    </c:if>
-    </div> 
+    <div id="msg" class="msg"> ${URLDecoder.decode(param.msg, "utf-8")}</div>  
     <label for="">아이디</label>
     <input class="input-field" type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합">
     <label for="">비밀번호</label>
@@ -93,20 +91,19 @@
    </form> 
    <script>
        function formCheck(frm) {
-            let msg ='';
+            var msg ='';
+
             if(frm.id.value.length<3) {
                 setMessage('id의 길이는 3이상이어야 합니다.', frm.id);
                 return false;
             }
-            if(frm.pwd.value.length<3) {
-                setMessage('pwd의 길이는 3이상이어야 합니다.', frm.pwd);
-                return false;
-            }           
-           
+
            return true;
        }
+
        function setMessage(msg, element){
             document.getElementById("msg").innerHTML = `<i class="fa fa-exclamation-circle"> ${'${msg}'}</i>`;
+
             if(element) {
                 element.select();
             }

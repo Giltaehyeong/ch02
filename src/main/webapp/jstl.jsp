@@ -7,7 +7,6 @@
 </head>
 <body>
 <c:set var="to"   value="10"/>
-<!-- EL은 lv 사용 x, 저장소에 저장 -->
 <c:set var="arr"  value="10,20,30,40,50,60,70"/> 
 <c:forEach var="i" begin="1" end="${to}">
 	${i}
@@ -20,7 +19,7 @@
 </c:if>	
 <c:if test="${param.msg != null}">
 	msg=${param.msg} 
-	msg=<c:out value="${param.msg}"/> <!-- Tag 해석 x -->
+	msg=<c:out value="${param.msg}"/>
 </c:if>
 <br>
 <c:if test="${param.msg == null}">메시지가 없습니다.<br></c:if>

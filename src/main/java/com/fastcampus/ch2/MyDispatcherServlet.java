@@ -3,8 +3,10 @@ package com.fastcampus.ch2;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
@@ -22,7 +24,7 @@ import org.springframework.validation.support.BindingAwareModelMap;
 public class MyDispatcherServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		Map    map = request.getParameterMap(); // year=2021&month=10&day=1 맵으로 가져옴. key value
+		Map    map = request.getParameterMap();
 		Model  model = null;
 		String viewName = "";
 		
